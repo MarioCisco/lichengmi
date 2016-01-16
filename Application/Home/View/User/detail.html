@@ -1,0 +1,144 @@
+<!-- 调用头部文件 -->
+<include file = "Public:homeheader" title = "个人主页-{$SiteInfo.title}" />
+<!-- 本页导航栏开始 -->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>个人主页</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="__APP__">首页</a>
+            </li>
+            <li>
+                <a href="__MODULE__/User">会员中心</a>
+            </li>
+            <li class="active">
+                <strong>个人主页</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<!-- 本页导航栏结束 -->
+
+<!-- 正文开始 -->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+<div class="wrapper wrapper-content">
+        <div class="row">
+            <include file = "Public:userleft" />
+            <div class="col-lg-9 animated fadeInRight">
+            <div class="mail-box-header">
+            <center>
+                <h2>
+                    会员中心主页
+                </h2>
+                <h2>
+                    <a href="__MODULE__/Blog/index/id/{$arr.uid}" target="_blank">预览我的主页</a>
+                </h2>
+            </center>
+            </div>
+            <form action="__URL__/saveDetail" method="post">
+                <div class="mail-box" style="padding:10px;">
+                    <div class="form-group">
+                        <label>我的标签：多个之间请用逗号隔开！</label>
+                        <input  class="form-control " type="text" name = "biaoqian" required value="{$arr.biaoqian}">
+                    </div>
+                    <div class="form-group">
+                        <label>自我介绍：</label>
+                        <textarea name="description" id="" cols="30" rows="4" class="form-control " required >{$arr.description}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>个性签名：多个之间请用逗号隔开！</label>
+                        <input  class="form-control " type="text" name = "gexing" required value="{$arr.gexing}">
+                    </div>
+                    <div class="form-group">
+                        <label>擅长的技能标题1：</label>
+                        <input  class="form-control " type="text" name = "shanchangtitle1" required value = "{$arr.shanchangtitle1}">
+                    </div>
+                    <div class="form-group">
+                        <label>擅长的技能内容1：</label>
+                        <textarea name="shanchangcontent1" id="" cols="30" rows="4" class="form-control " required >{$arr.shanchangcontent1}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>擅长的技能标题2：</label>
+                        <input  class="form-control " type="text" name = "shanchangtitle2" required value = "{$arr.shanchangtitle2}">
+                    </div>
+                    <div class="form-group">
+                        <label>擅长的技能内容2：</label>
+                        <textarea name="shanchangcontent2" id="" cols="30" rows="4" class="form-control " required >{$arr.shanchangcontent2}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>擅长的技能标题3：</label>
+                        <input  class="form-control " type="text" name = "shanchangtitle3" required value = "{$arr.shanchangtitle3}">
+                    </div>
+                    <div class="form-group">
+                        <label>擅长的技能内容3：</label>
+                        <textarea name="shanchangcontent3" id="" cols="30" rows="4" class="form-control " required >{$arr.shanchangcontent3}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>擅长的技能标题4：</label>
+                        <input  class="form-control " type="text" name = "shanchangtitle4" required value = "{$arr.shanchangtitle4}">
+                    </div>
+                    <div class="form-group">
+                        <label>擅长的技能内容4：</label>
+                        <textarea name="shanchangcontent4" id="" cols="30" rows="4" class="form-control " required >{$arr.shanchangcontent4}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>最得意的作品标题1：</label>
+                        <input  class="form-control " type="text" name = "zuopintitle1" required value = "{$arr.zuopintitle1}">
+                    </div>
+                    <div class="form-group">
+                        <label>最得意的作品内容1：</label>
+                        <textarea name="zuopincontent1" id="" cols="30" rows="1" class="form-control " required>{$arr.zuopincontent1}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>最得意的作品标题2：</label>
+                        <input  class="form-control " type="text" name = "zuopintitle2" required value = "{$arr.zuopintitle2}">
+                    </div>
+                    <div class="form-group">
+                        <label>最得意的作品内容2：</label>
+                        <textarea name="zuopincontent2" id="" cols="30" rows="1" class="form-control " required>{$arr.zuopincontent2}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>最得意的作品标题:3：</label>
+                        <input  class="form-control " type="text" name = "zuopintitle3" required value = "{$arr.zuopintitle3}">
+                    </div>
+                    <div class="form-group">
+                        <label>最得意的作品内容3：</label>
+                        <textarea name="zuopincontent3" id="" cols="30" rows="1" class="form-control " required>{$arr.zuopincontent3}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>最得意的作品标题4：</label>
+                        <input  class="form-control " type="text" name = "zuopintitle4" required value = "{$arr.zuopintitle4}">
+                    </div>
+                    <div class="form-group">
+                        <label>最得意的作品内容4：</label>
+                        <textarea name="zuopincontent4" id="" cols="30" rows="1" class="form-control " required>{$arr.zuopincontent4}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>人生格言：</label>
+                        <input  class="form-control " type="text" name = "geyan" required value = "{$arr.geyan}">
+                    </div>
+                    <div class="form-group">
+                        <label>男生对我的评价：</label>
+                        <input  class="form-control " type="text" name = "pingjianan" required value = "{$arr.pingjianan}">
+                    </div>
+                    <div class="form-group">
+                        <label>女对我的评价：</label>
+                        <input  class="form-control " type="text" name = "pingjianv" required value = "{$arr.pingjianv}">
+                    </div>
+                    <center><button type="submit" class="btn btn-block btn-outline btn-primary">修改保存</button></center>
+                </div>
+                </form>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+    </div>
+<!-- 正文结束 -->
+
+<!-- 调用脚部文件 -->
+<include file = "Public:homefooter"  />

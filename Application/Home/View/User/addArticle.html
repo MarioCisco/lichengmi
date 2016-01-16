@@ -1,0 +1,153 @@
+<!-- 调用头部文件 -->
+<include file = "Public:homeheader" title = "会员中心-{$SiteInfo.title}" />
+<!-- 本页导航栏开始 -->
+<link href="__PUBLIC__/css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="__PUBLIC__/css/plugins/summernote/summernote.css" rel="stylesheet">
+<link href="__PUBLIC__/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>会员中心</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="__APP__">首页</a>
+            </li>
+            <li>
+                <a href="__URL__/index">会员中心</a>
+            </li>
+            <li class="active">
+                <strong>写文章</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<!-- 本页导航栏结束 -->
+
+<!-- 正文开始 -->
+<div class="wrapper wrapper-content fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="wrapper wrapper-content">
+                <div class="row">
+                    <include file = "Public:userleft" />
+                    <div class="col-lg-9 fadeInRight">
+                        <div class="mail-box-header">
+                            <h2>
+                                写文章
+                            </h2>
+                        </div>
+                        <div class="mail-box">
+                            <div class="mail-body">
+                                <form class="form-horizontal" action="__URL__/doAddArticle" method="post" enctype= "multipart/form-data">
+                                    <div class="form-group" ><label class="col-sm-2 control-label">标题：</label>
+
+                                        <div class="col-sm-10"><input type="text" class="form-control" name = "title" require id = "title"></div>
+                                    </div>
+                                    <div class="form-group"><label class="col-sm-2 control-label" >分类：</label>
+
+                                        <div class="col-sm-10">
+                                            <select name="fid" id="" require id = "fidss" class="form-control" onchange="change(this)">
+                                                <foreach name = "arr" item = "vo">
+                                                    <option value="{$vo.id}" type = "{$vo.type}">{$vo.name}</option>
+                                                </foreach>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group"><label class="col-sm-2 control-label">图片：<span style = "color:red;">必须</span></label>
+
+                                        <div class="col-sm-10"><input type="file" value="" name= "pic" ></div>
+                                    </div>
+
+                                    <div class="form-group" style="display:none;" id = "biaoqian"><label class="col-sm-2 control-label">电影标签：</label>
+
+                                        <div class="col-sm-10"><input type="text" class="form-control" name = "biaoqian" require ></div>
+                                    </div>
+
+                                    <div class="form-group" style="display:none;" id = "pingfen"><label class="col-sm-2 control-label">评分0-100：</label>
+
+                                        <div class="col-sm-10"><input type="text" class="form-control" name = "pingfen" require ></div>
+                                    </div>
+
+                                    <div class="form-group" style="display:none;" id = "mp3"><label class="col-sm-2 control-label">音乐文件：</label>
+
+                                        <div class="col-sm-10"><input type="file" value="" name= "mp3" ></div>
+                                    </div>
+
+
+                                    <link href="__PUBLIC__/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+                                    <script type="text/plain" name="content" id="myEditor" style="width:100%;height:510px;">
+                                    <p>里程密一直与你同在</p>
+                                    </script>
+                                    <div class="mail-body text-center tooltip-demo">
+                                        <button  class="btn btn-sm btn-primary" id = "adds" type="submit"> 发布</button>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </form>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 正文结束 -->
+
+
+
+
+
+<!-- 调用脚部文件 -->
+<script type="text/javascript" src="__PUBLIC__/umeditor/third-party/jquery.min.js"></script>
+<script src="__PUBLIC__/js/inspinia.js"></script>
+<include file="Public/homefooter" />
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/umeditor/umeditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/umeditor/umeditor.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/umeditor/lang/zh-cn/zh-cn.js"></script>
+
+
+
+
+    <!-- Custom and plugin javascript -->
+
+
+
+
+
+<script>
+    $(function(){
+        var um = UM.getEditor('myEditor');
+    })
+</script>
+<script>
+    function change(s){
+        a=$(s).find("option:selected").attr("type");
+        if(a ==2){
+            $("#biaoqian").css("display","none");
+            $("#pingfen").css("display","none");
+            $("#mp3").css("display","block");
+            $("#pic2").css("display","none");
+        }else if(a==3){
+            $("#biaoqian").css("display","block");
+            $("#pingfen").css("display","block");
+            $("#mp3").css("display","none");
+            $("#pic2").css("display","none");
+        }else if(a==4){
+            $("#biaoqian").css("display","none");
+            $("#pingfen").css("display","none");
+            $("#mp3").css("display","none");
+            $("#pic2").css("display","none");
+        }else{
+            $("#biaoqian").css("display","none");
+            $("#pingfen").css("display","none");
+            $("#mp3").css("display","none");
+            $("#pic2").css("display","none");
+        }
+    }
+</script>

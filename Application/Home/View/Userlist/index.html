@@ -1,0 +1,66 @@
+<!-- 调用头部文件 -->
+<include file = "Public:homeheader" title = "会员列表-{$SiteInfo.title}" />
+<!-- 本页导航栏开始 -->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>首页</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="__APP__">首页</a>
+            </li>
+            <li class="active">
+                <strong>会员列表</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<!-- 本页导航栏结束 -->
+
+<!-- 正文开始 -->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+    <foreach name = "arr" item = "vo">
+            <div class="col-lg-4">
+                <div class="contact-box">
+                    <a href="__MODULE__/Blog/index/id/{$vo.id}" target="_blank">
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="__PUBLIC__/Uploads/{$vo.pic}">
+                            <div class="m-t-xs font-bold">注册会员</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <h3><strong>{$vo.truename}</strong></h3>
+                        <p><i class="fa fa-map-marker"></i>注册时间：{$vo.ctime|date ='Y-m-d',###}</p>
+                        <address>
+                            <strong>最后登录：{$vo.lasttime|date ='Y-m-d',###}</strong><br>
+                            擅长[1]：{$vo.shanchangtitle1}<br>
+                            擅长[2]：{$vo.shanchangtitle2}<br>
+                            作品[1]：{$vo.zuopintitle1}<br>
+                            作品[2]：{$vo.zuopintitle2}<br>
+                        </address>
+                    </div>
+                    <div class="clearfix"></div>
+                        </a>
+                </div>
+            </div>
+</foreach>
+
+
+
+        </div>
+    </div>
+<!-- 正文结束 -->
+
+<!-- 调用脚部文件 -->
+<include file = "Public:homefooter"  />
+<script>
+        $(document).ready(function(){
+            $('.contact-box').each(function() {
+                animationHover(this, 'pulse');
+            });
+        });
+    </script>

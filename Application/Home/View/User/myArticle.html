@@ -1,0 +1,92 @@
+<!-- 调用头部文件 -->
+<include file = "Public:homeheader" title = "我的文章-{$SiteInfo.title}" />
+<!-- 本页导航栏开始 -->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>我的文章</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="__APP__">首页</a>
+            </li>
+            <li class="active">
+                <strong>我的文章</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<!-- 本页导航栏结束 -->
+
+<!-- 正文开始 -->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+<div class="wrapper wrapper-content">
+        <div class="row">
+            <include file = "Public:userleft" />
+            <div class="col-lg-9 animated fadeInRight">
+            <div class="mail-box-header">
+            <center>
+                <h2>
+                    我的文章
+                </h2>
+            </center>
+            </div>
+                <div class="mail-box" style="padding-top:10px;">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>文章列表</h5>
+                        </div>
+                        <div class="ibox-content">
+
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>标题</th>
+                                    <th>浏览</th>
+                                    <th>评论</th>
+                                    <th>时间</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <foreach name = "articleList" item= "vo" key = "k">
+                                <tr>
+                                    <td>{$k+1}</td>
+                                    <td>{$vo.title|msubstr=0,20,'utf-8',true}</td>
+                                    <td>{$vo.view}</td>
+                                    <td>{$vo.comment}</td>
+                                    <td>{$vo.ctime|date = "Y-m-d",###}</td>
+                                    <td><a href="__MODULE__/Article/index/id/{$vo.id}"><button type="button" class="btn btn-primary btn-xs">查看</button></a>
+                                        <a href="__URL__/delArticle/id/{$vo.id}" onclick="return queren()"><button type="button" class="btn btn-danger btn-xs">删除</button></a>
+                                    </td>
+                                </tr>
+                                </foreach>
+                                </tbody>
+                            </table>
+                            {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+    </div>
+<!-- 正文结束 -->
+
+<!-- 调用脚部文件 -->
+<include file = "Public:homefooter"  />
+<script>
+    function queren(){
+        if(confirm("确认删除？")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+</script>

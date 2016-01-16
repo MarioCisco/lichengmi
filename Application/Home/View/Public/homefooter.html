@@ -1,0 +1,51 @@
+        <div class="footer">
+            <div class="pull-right">
+                作为一个开源程序员 <strong>如果你使用本站程序</strong> 请保留友情链接.
+            </div>
+            <div>
+                <strong>Copyright</strong> <a href="http://www.lcm.wang/">里程密</a> &copy; 2014-2016
+                管理员邮箱：{$SiteInfo.admin_email}
+            </div>
+        </div>
+
+        </div>
+        </div>
+
+    <script src="__PUBLIC__/js/jquery-2.1.1.js"></script>
+    <script src="__PUBLIC__/js/jquery-ui-1.10.4.min.js"></script>
+    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="__PUBLIC__/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="__PUBLIC__/js/inspinia.js"></script>
+    <script src="__PUBLIC__/js/plugins/pace/pace.min.js"></script>
+
+    <!-- iCheck -->
+    <script src="__PUBLIC__/js/plugins/iCheck/icheck.min.js"></script>
+
+    <!-- Jvectormap -->
+    <script src="__PUBLIC__/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="__PUBLIC__/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!-- Flot -->
+    <script src="__PUBLIC__/js/plugins/flot/jquery.flot.js"></script>
+    <script src="__PUBLIC__/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="__PUBLIC__/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script>
+        var s_url=window.location.pathname;
+        var now_url = '';
+        for(var i = 0;i<$("#side-menu li").length;i++){
+            now_url=$("#side-menu li a").eq(i).attr("href");
+            if(now_url == s_url){
+                $("#side-menu a").eq(i).parent().addClass("active");
+                $("#side-menu a").eq(i).parent().parent().parent().addClass("active");
+                $("#side-menu a").eq(i).parent().parent().addClass("in");
+            }else{
+                $("#side-menu a").eq(i).parent().removeClass("active");
+            }
+        }
+        </script>
+</body>
+
+</html>

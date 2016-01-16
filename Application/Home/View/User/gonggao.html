@@ -1,0 +1,80 @@
+<!-- 调用头部文件 -->
+<include file = "Public:homeheader" title = "管理公告-{$SiteInfo.title}" />
+<!-- 本页导航栏开始 -->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>管理公告</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="__APP__">首页</a>
+            </li>
+            <li>
+                <a href="__MODULE__/User">会员中心</a>
+            </li>
+            <li class="active">
+                <strong>管理公告</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<!-- 本页导航栏结束 -->
+
+<!-- 正文开始 -->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+<div class="wrapper wrapper-content">
+        <div class="row">
+            <include file = "Public:userleft" />
+            <div class="col-lg-9 animated fadeInRight">
+            <div class="mail-box-header">
+            <center>
+                <h2>
+                    管理公告
+                </h2>
+            </center>
+            </div>
+                <div class="mail-box" style="padding-top:10px;">
+                <foreach name = "arr" item = "vo">
+                    <div class="faq-item">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <a aria-expanded="false" data-toggle="collapse" href="#faq{$vo.id}" class="faq-question collapsed">{$vo.title}</a>
+                                    <small>Added by <strong>Alex Smith</strong> <i class="fa fa-clock-o"></i>{$vo.ctime|date = "Y-m-d H:i:s",###}</small>
+                                </div>
+                                <div class="col-md-3">
+                                    <span class="small font-bold">会员请严格遵守</span>
+                                    <div class="tag-list">
+                                        <span class="tag-item">里程密管理员</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-right">
+                                    <span class="small font-bold">超级BOSS </span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div style="height: 0px;" aria-expanded="false" id="faq{$vo.id}" class="panel-collapse collapse">
+                                        <div class="faq-answer">
+                                            <p>
+                                                {$vo.content}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </foreach>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+    </div>
+<!-- 正文结束 -->
+
+<!-- 调用脚部文件 -->
+<include file = "Public:homefooter"  />

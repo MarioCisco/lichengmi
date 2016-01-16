@@ -1,0 +1,315 @@
+<!-- 调用头部文件 -->
+<include file = "Public:homeheader" title = "{$articleInfo.title}-{$SiteInfo.title}" />
+<style>
+    #beijing img{
+        max-width: 100%;
+    }
+</style>
+<!-- 本页导航栏开始 -->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>{$articleInfo.title}</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="__APP__">首页</a>
+            </li>
+            <li>
+                <a href="__MODULE__/Fenlei/index/id/{$fenleiInfo.id}">{$fenleiInfo.name}</a>
+            </li>
+            <li class="active">
+                <strong>{$articleInfo.title}</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    <input type="hidden" id = "id" value= "{$articleInfo.id}">
+    <input type="hidden" id = "userid" value= "{$articleInfo.uid}">
+    </div>
+</div>
+<!-- 本页导航栏结束 -->
+
+<!-- 正文开始 -->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-lg-9">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <div class="text-center article-title" style="margin:20px 0px 20px">
+                            <span class="text-muted">
+                                <h1>
+                                    {$articleInfo.title}
+                                </h1>
+                            </div>
+                            <div style="margin-bottom:50px;">
+                            <switch name="fenleiInfo.type" >
+                            <case value="1">
+                                <img src="__PUBLIC__/Uploads/{$articleInfo.pic}" alt="" style="width:100%">
+                                </case>
+                            <case value="2">
+                            <!-- 音乐 -->
+                            <link rel="stylesheet" href="__PUBLIC__/music/css/lanrenzhijia.css" type="text/css" />
+                                <div class="music-player">
+                                  <div class="info">
+                                    <div class="left"> <a href="javascript:;" class="icon-shuffle"></a> <a href="javascript:;" class="icon-heart"></a> </div>
+                                    <div class="center">
+                                      <div class="jp-playlist">
+                                        <ul>
+                                          <li></li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <div class="right"> <a href="javascript:;" class="icon-repeat"></a> <a href="javascript:;" class="icon-share"></a> </div>
+                                    <div class="progress jp-seek-bar"> <span class="jp-play-bar" style="width: 0%"></span> </div>
+                                  </div>
+                                  <div class="controls">
+                                    <div class="current jp-current-time">00:00</div>
+                                    <div class="play-controls">
+                                        <a href="javascript:;" class="icon-previous jp-previous" title="previous"></a>
+                                        <a href="javascript:;" class="icon-play jp-play" title="play"></a>
+                                        <a href="javascript:;" class="icon-pause jp-pause" title="pause"></a>
+                                        <a href="javascript:;" class="icon-next jp-next" title="next"></a>
+                                     </div>
+                                    <div class="volume-level jp-volume-bar">
+                                        <span class="jp-volume-bar-value" style="width: 0%"></span>
+                                            <a href="javascript:;" class="icon-volume-up jp-volume-max" title="max volume"></a>
+                                            <a href="javascript:;" class="icon-volume-down jp-mute" title="mute"></a>
+                                    </div>
+                                  </div>
+                                  <div id="jquery_jplayer" class="jp-jplayer"></div>
+                                </div>
+                                <script src="__PUBLIC__/music/js/jquery.min.js"></script>
+                                <script src='__PUBLIC__/music/js/jquery.jplayer.min.js'></script>
+                                <script src='__PUBLIC__/music/js/jplayer.playlist.min.js'></script>
+                                <script>
+                                    $(document).ready(function(){
+
+
+                                      var playlist = [{
+                                          title:"{$articleInfo.title}",
+                                          artist:"{$userInfo.truename}",
+                                          mp3:"__PUBLIC__/Uploads/{$articleInfo.mp3}",
+                                          //oga:"http://www.jplayer.org/audio/ogg/Miaow-02-Hidden.ogg",
+                                          poster: "__PUBLIC__/Uploads/{$articleInfo.pic}"
+                                        }];
+
+                                      var cssSelector = {
+                                        jPlayer: "#jquery_jplayer",
+                                        cssSelectorAncestor: ".music-player"
+                                      };
+
+                                      var options = {
+                                        swfPath: "http://cdnjs.cloudflare.com/ajax/libs/jplayer/2.6.4/jquery.jplayer/Jplayer.swf",
+                                        supplied: "ogv, m4v, oga, mp3"
+                                      };
+
+                                      var myPlaylist = new jPlayerPlaylist(cssSelector, playlist, options);
+
+                                    });
+                                </script>
+                                <!-- 音乐 -->
+                            </case>
+                            <case value="3">
+                                <img src="__PUBLIC__/Uploads/{$articleInfo.pic}" alt="" style="width:100%">
+                            </case>
+                            <default />
+                                <img src="__PUBLIC__/Uploads/{$articleInfo.pic}" alt="" style="width:100%">
+                            </switch>
+
+                            </div>
+
+                                <div id = "beijing">
+                            <p style="font-size:14px;" class="text2" >
+                            <if condition = "$fenleiInfo.type eq 4">
+                                {$articleInfo.content|strip_tags}
+                                <else />
+                                {$articleInfo.content}
+                                </if>
+                            </p>
+                            </div>
+                            <hr>
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                <h1>回复列表</h1>
+                                <div id="pinglun">
+
+                                    </div>
+                                    <button class="btn btn-primary btn-block m" id = "show" onclick="replay()" style="margin:0px;"><i class="fa fa-arrow-down"></i>查看更多</button>
+                                </div>
+                            <hr>
+                            </div>
+                            <hr>
+                            <div class="row" id = "huifus">
+                                <div class="col-md-6">
+                                <form action="__URL__/replay/id/{$articleInfo.id}" method="post">
+                                <div class="form-group"><label class="col-sm-2 control-label">楼层</label>
+
+                                    <div class="col-sm-10" >
+                                        <input type="text" value = "顶楼" disabled="" class="form-control" id = "replay">
+                                    </div>
+                                </div>
+                                <input type="hidden" value = "" name = "replay" id = "huifuyincang">
+                                <br><br>
+                                <div class="form-group"><label class="col-sm-2 control-label">昵称</label>
+
+                                    <div class="col-sm-10"><input class="form-control" type="text" placeholder = "请填写昵称" name = "name" required></div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="form-group"><label class="col-sm-2 control-label" >邮箱</label>
+
+                                    <div class="col-sm-10"><input class="form-control" type="email" placeholder = "请填写邮箱" name = "email" required></div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="form-group"><label class="col-sm-2 control-label" >内容</label>
+
+                                    <div class="col-sm-10">
+                                        <textarea name="content" id="" cols="30" rows="5" placeholder = "请填写内容" required></textarea>
+                                    </div>
+                                </div>
+
+                                    <center><button type="submit" class="btn btn-w-m btn-warning" style="margin-top:10px;">提交回复</button></center>
+                                    </form>
+                                </div>
+                                <div class="col-md-6">
+                                <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <i class="fa fa-info-circle"></i>回复规则
+                                        </div>
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li>请勿发表辱骂，人身攻击等内容（否则封IP）</li>
+                                                <li>本站不设验证码，所以也请注意不要刷屏</li>
+                                                <li>可以讨论技术，但是对喷就没意思了</li>
+                                                <li>文章哪里让你不爽，你可以指出来，不要上来就开喷</li>
+                                                <li>发外链，发广告的，后果自己负责</li>
+                                                <li>这里是一个干净，和谐的环境</li>
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                        <div class="widget-head-color-box navy-bg p-lg text-center" style="margin-top:0px;">
+                            <div class="m-b-md">
+                            <h2 class="font-bold no-margins">
+                                {$userInfo.truename}
+                            </h2>
+                                <small>注册会员</small>
+                            </div>
+                            <img src="__PUBLIC__/Uploads/{$userInfo.pic}" class="img-circle circle-border m-b-md" alt="profile" height="150px;">
+                        </div>
+                        <div class="widget-text-box">
+                            <p><span class="label label-success"  style="font-size:12px;">发布时间：{$articleInfo.ctime|date ='Y-m-d H:i:s',###}</span></p>
+                            <p><span class="label label-success"  style="font-size:12px;">修改时间：{$articleInfo.edittime|date ='Y-m-d H:i:s',###}</span></p>
+                            <p><span class="label label-success"  style="font-size:12px;">查看次数：{$articleInfo.view}</span></p>
+                            <p><span class="label label-success"  style="font-size:12px;">评论次数：{$articleInfo.comment}</span></p>
+                        </div>
+                        <div class="widget lazur-bg p-xl">
+                                <h2>
+                                   TA的文章总数
+                                </h2>
+                               <center> <h1>{$articleCount}</h1></center>
+                                <a href="__MODULE__/Blog/index/id/{$userInfo.id}" target="_blank"><center><button type="button" class="btn btn-w-m btn-danger">查看他的主页</button></center></a>
+                    </div>
+                    <div class="widget yellow-bg p-lg text-left" style="padding-left:5px;padding-right:5px;">
+                    <center><h2>TA的最新文章</h2></center>
+                        <ul class="todo-list m-t ui-sortable" style="color:#000;">
+                        <foreach name ="zuixin" item = "vo">
+                        <li>
+                            <span class="m-l-xs"><a href="__MODULE__/Article/index/id/{$vo.id}">{$vo.title|msubstr=0,10,'utf-8',true}</a></span>
+                        </li>
+                        </foreach>
+                    </ul>
+                    </div>
+                        <div class="widget red-bg p-lg text-center" style="padding:10px;">
+                        <div class="m-b-md" style="margin-bottom:15px;">
+                        <i class="fa fa-bell fa-4x"></i>
+                            <button type="button" class="btn btn-w-m btn-info" style="margin-top:15px;">给他私信（会员才可使用）</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 正文结束 -->
+
+    <!-- 调用脚部文件 -->
+    <include file = "Public:homefooter"  />
+<script>
+function huifuss(a){
+    $("#replay").val("回复"+a+"楼");
+    $("#huifuyincang").val(a);
+}
+var num = 0;
+var id = $("#id").val();
+var userid = $("#userid").val();
+var now = 0;
+function replay(){
+    $.ajax({
+       type: "POST",
+       url: "__URL__/getReplay",
+       data: "id="+id+"&num="+num,
+       success: function(msg){
+         if(msg == 5){
+            $("#show").html('<i class="fa fa-arrow-down"></i>没有更多内容了');
+         }else{
+            msg = eval(msg);
+            for (var i in msg)
+            {
+                now ++;
+                if(msg[i].replay !=0){
+                    msg[i].content = "<span class = 'label label-info' style = 'font-size:12px;'>回复"+msg[i].replay+"楼:</span><br/><br>"+msg[i].content;
+                }
+                if(msg[i].pic ==null){
+                    var pic = '__PUBLIC__/Uploads/default.png';
+                }else{
+                    var pic = "__PUBLIC__/Uploads/"+msg[i].pic;
+                }
+                if(msg[i].uid == userid){
+                    var shenfen = '<a class="btn btn-xs btn-white" href = "#huifus"onclick="huifuss('+now+')"><i class="fa fa-heart"></i> 回复 </a> <a class="btn btn-xs btn-danger"><i class="fa fa-pencil"></i> 楼主';
+                }else{
+                    var shenfen = '<a class="btn btn-xs btn-white" href = "#huifus" onclick="huifuss('+now+')"><i class="fa fa-heart"></i> 回复 </a> <a class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i> 游客';
+                }
+
+                var tm = new Date(parseInt(msg[i].ctime) * 1000).toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+
+                $("#pinglun").append('<div class="feed-element"><a href="#" class="pull-left"><img alt="image" class="img-circle" src="'+pic+'"></a><div class="media-body "><small class="pull-right" style ="font-size:12px;">'+now+'楼</small><strong style = "font-size:15px;">'+msg[i].name+'</strong><br><small class="text-muted">'+tm+'</small><div class="well" style = "font-size:14px;">'+msg[i].content+'</div><div class="pull-right">'+shenfen+'</a></div></div></div><hr />');
+            }
+            num = num+10;
+         }
+       }
+    });
+}
+replay();
+</script>
+<if condition = "$fenleiInfo.type eq 4">
+                                <link href="__PUBLIC__/wenzixiaoguo/css/animate.css" rel="stylesheet">
+                                <script src="__PUBLIC__/wenzixiaoguo/js/jquery.lettering.js"></script>
+                                <script src="__PUBLIC__/wenzixiaoguo/js/jquery.textillate.js"></script>
+                                <script>
+                                        $(function () {
+                                        $('.text2').textillate({
+                                            initialDelay: 1000,     //设置动画开始时间
+                                            in: { effect: 'flipInX' //设置动画名称
+                                            }
+                                        });
+                                    })
+                                        $("#beijing").css("background","#242424");
+                                        $("#beijing").css("color","#fff");
+                                        $("#beijing").css("padding","10px");
+                                </script>
+                                <style type="text/css">
+                                .text1,.text2,.text3 {visibility:hidden;}
+                                .text2 {font-family:microsoft yahei;font-size:14px;line-height:24px;text-shadow:0.1em 0.1em 0.1em rgba(0, 0, 0, 0.8)}
+                                </style>
+                            <else />
+</if>

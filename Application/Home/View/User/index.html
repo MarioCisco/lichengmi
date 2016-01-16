@@ -1,0 +1,56 @@
+<!-- 调用头部文件 -->
+<include file = "Public:homeheader" title = "会员中心-{$SiteInfo.title}" />
+<!-- 本页导航栏开始 -->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>会员中心</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="__APP__">首页</a>
+            </li>
+            <li class="active">
+                <strong>会员中心</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+    </div>
+</div>
+<!-- 本页导航栏结束 -->
+
+<!-- 正文开始 -->
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+<div class="wrapper wrapper-content">
+        <div class="row">
+            <include file = "Public:userleft" />
+            <div class="col-lg-9 animated fadeInRight">
+            <div class="mail-box-header">
+            <center>
+                <h2>
+                    会员中心主页
+                </h2>
+            </center>
+            </div>
+                <div class="mail-box" style="padding-top:10px;">
+                    <center>
+                    <h1>亲爱的程序员{$Think.session.muser},欢迎你回家</h1>
+                    <h1>希望你能遵守这里的每一条规则</h1>
+                    <h1>我们共同让这里变得更美好</h1>
+                    <h1>代码的世界里面没有喧嚣</h1>
+                    <h1>但请你记住</h1>
+                    <h1>We Will Change The World</h1>
+                    <h1>你能做的事情都在左边</h1>
+                    </center>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+    </div>
+<!-- 正文结束 -->
+
+<!-- 调用脚部文件 -->
+<include file = "Public:homefooter"  />
